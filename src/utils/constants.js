@@ -9,3 +9,9 @@ export const VIDEOS_URL =
 export const CHANNELS_URL =
   "https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&key=" +
   API_KEY;
+
+export const SEARCH_SUGGESTIONS =
+  "http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=";
+
+export const SEARCH_VIDEOS =
+  "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=";
