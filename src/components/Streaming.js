@@ -1,10 +1,12 @@
 import React from "react";
 import { useSearchParams } from "react-router-dom";
+import NestedComments from "./NestedComments";
 
 const Streaming = () => {
   const [searchParam] = useSearchParams();
 
   return (
+    <>
     <div className="px-5">
       <iframe
         width="800"
@@ -16,6 +18,10 @@ const Streaming = () => {
         allowFullScreen
       ></iframe>
     </div>
+    <div>
+      <NestedComments />
+    </div>
+    </>
   );
 };
 
