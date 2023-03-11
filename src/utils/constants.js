@@ -15,3 +15,5 @@ export const SEARCH_SUGGESTIONS =
 
 export const SEARCH_VIDEOS =
   "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=";
+
+export const OFFSET_LIVE_CHAT = 25

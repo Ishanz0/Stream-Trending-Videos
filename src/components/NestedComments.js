@@ -115,7 +115,7 @@ const CommentsList = ({ data }) => {
 
 const NestedComments = () => {
   return (
-    <div className="m-5 p-2">
+    <div className="m-5 p-2 w-[800px]">
       <h1 className="text-2xl font-bold">Comments: </h1>
       <CommentsList data={commentsData} />
     </div>

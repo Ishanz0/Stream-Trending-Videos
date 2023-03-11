@@ -1,5 +1,6 @@
 import React from "react";
 import { useSearchParams } from "react-router-dom";
+import LiveChat from "./LiveChat";
 import NestedComments from "./NestedComments";
 
 const Streaming = () => {
@@ -7,7 +8,8 @@ const Streaming = () => {
 
   return (
     <>
-    <div className="px-5">
+    <div className="px-5 flex w-full">
+      <div>
       <iframe
         width="800"
         height="450"
@@ -17,6 +19,10 @@ const Streaming = () => {
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowFullScreen
       ></iframe>
+      </div>
+      <div className="flex-1">
+        <LiveChat />
+      </div>
     </div>
     <div>
       <NestedComments />

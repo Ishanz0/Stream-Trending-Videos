@@ -5,7 +5,7 @@ import VideoList from './VideosList';
 
 const Body = () => {
   return (
-    <div>
+    <div className='w-full'>
         <Outlet />
     </div>
   )
