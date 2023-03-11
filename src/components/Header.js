@@ -4,6 +4,7 @@ import { SEARCH_SUGGESTIONS } from "../utils/constants";
 import { cacheResults } from "../utils/searchSlice";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { toggleMenu } from "../utils/appSlice";
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -42,10 +43,14 @@ const Header = () => {
     navigate("/results?q=" + suggestion);
   }
 
+  const toggleMenuHandler = () => {
+    dispatch(toggleMenu());
+  };
+
   return (
     <div className="p-3 ml-3 flex">
       <div className="flex">
-        <button>
+        <button onClick={() => toggleMenuHandler()}>
           <svg
             className="fill-current h-5 w-5 hover:bg-gray-200"
             viewBox="0 0 20 20"
