@@ -1,18 +1,23 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
     <div className="p-3 mt-3">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        className="ml-2.5 h-5 w-5"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-      >
-        <path d="M3 10h18l-9-9-9 9zm0 4v6a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-4h6v4a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-6" />
-      </svg>
-      <p className="text-sm">Home</p>
+      <Link to="/">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="ml-2.5 h-5 w-5"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path d="M3 10h18l-9-9-9 9zm0 4v6a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-4h6v4a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-6" />
+        </svg>
+      </Link>
+      <p className="text-sm">
+        <Link to="/">Home</Link>
+      </p>
       <svg
         viewBox="0 0 24 24"
         className="ml-2 h-6 w-6 mt-6"

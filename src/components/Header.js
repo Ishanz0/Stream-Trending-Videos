@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { SEARCH_SUGGESTIONS } from "../utils/constants";
 import { cacheResults } from "../utils/searchSlice";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -9,6 +11,7 @@ const Header = () => {
   const [showSuggestions, setShowSuggestions] = useState(false);
   const searchCache = useSelector((store) => store.search);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -34,6 +37,11 @@ const Header = () => {
     );
   };
 
+  function handleSuggestionClick(suggestion) {
+    setSearchQuery(suggestion);
+    navigate("/results?q=" + suggestion);
+  }
+
   return (
     <div className="p-3 ml-3 flex">
       <div className="flex">
@@ -47,12 +55,16 @@ const Header = () => {
             <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
           </svg>
         </button>
-        <img
-          className="h-8 w-8 ml-7"
-          src="https://cdn-icons-png.flaticon.com/128/1384/1384060.png"
-          alt="youtube"
-        ></img>
-        <p className="p-0.5 font-bold text-xl">YouTube</p>
+        <Link to="/">
+          <img
+            className="h-8 w-8 ml-7"
+            src="https://cdn-icons-png.flaticon.com/128/1384/1384060.png"
+            alt="youtube"
+          />
+        </Link>
+        <p className="p-0.5 font-bold text-xl">
+          <Link to="/">YouTube</Link>
+        </p>
       </div>
       <div className="relative ml-[100px]">
         <div className="flex">
@@ -65,7 +77,10 @@ const Header = () => {
             onFocus={() => setShowSuggestions(true)}
             onBlur={() => setShowSuggestions(false)}
           ></input>
-          <button className="bg-gray-100 rounded-r-full border border-gray-500 w-16 text-gray-500 flex items-center justify-center">
+          <button
+            className="bg-gray-100 rounded-r-full border border-gray-500 w-16 text-gray-500 flex items-center justify-center"
+            onClick={() => handleSuggestionClick(searchQuery)}
+          >
             <svg
               className="fill-current text-gray-500 h-6 w-6"
               viewBox="0 0 24 24"
@@ -78,7 +93,11 @@ const Header = () => {
           <div className="absolute bg-white shadow-lg rounded-xl py-2 border border-gray-100 top-full w-[565px] px-4">
             <ul>
               {suggestions?.map((suggestion) => (
-                <li key={suggestion} className="py-1 hover:bg-gray-100">
+                <li
+                  key={suggestion}
+                  className="py-1 hover:bg-gray-100"
+                  onMouseDown={() => handleSuggestionClick(suggestion)}
+                >
                   {suggestion}
                 </li>
               ))}
