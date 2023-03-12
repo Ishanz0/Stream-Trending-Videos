@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { toggleMenu } from "../utils/appSlice";
 
-const Header = () => {
+const Header = ({ isDarkTheme, onToggleTheme }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
@@ -47,12 +47,30 @@ const Header = () => {
     dispatch(toggleMenu());
   };
 
+  const inputClass = `rounded-l-full border ${
+    isDarkTheme ? "border-gray-400 bg-black" : "border-gray-500"
+  } px-4 w-[565px] h-8 text-gray-500 bg-${
+    isDarkTheme ? "gray-700" : "white"
+  }`;
+
+  const buttonClass = `rounded-r-full border ${
+    isDarkTheme ? "border-gray-400" : "border-gray-500"
+  } w-16 text-gray-500 bg-${
+    isDarkTheme ? "gray-700" : "white"
+  } flex items-center justify-center`;
+
+  const svgClass = `fill-current text-gray-500 ${
+    isDarkTheme ? "text-white" : ""
+  } h-6 w-6`;
+
   return (
-    <div className="p-3 ml-3 flex">
+    <div className={`p-3 flex ${
+      isDarkTheme ? "bg-black text-white" : "bg-white text-black"
+    }`}>
       <div className="flex">
         <button onClick={() => toggleMenuHandler()}>
           <svg
-            className="fill-current h-5 w-5 hover:bg-gray-200"
+            className="fill-current h-5 w-5 ml-3 hover:bg-gray-200"
             viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -78,16 +96,16 @@ const Header = () => {
             placeholder="Search"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="rounded-l-full border border-gray-500 px-4 w-[565px] h-8 text-gray-500"
+            className={inputClass}
             onFocus={() => setShowSuggestions(true)}
             onBlur={() => setShowSuggestions(false)}
           ></input>
           <button
-            className="bg-gray-100 rounded-r-full border border-gray-500 w-16 text-gray-500 flex items-center justify-center"
+            className={buttonClass}
             onClick={() => handleSuggestionClick(searchQuery)}
           >
             <svg
-              className="fill-current text-gray-500 h-6 w-6"
+              className={svgClass}
               viewBox="0 0 24 24"
             >
               <path d="M16.32 14.9l5.39 5.4a1 1 0 0 1-1.42 1.4l-5.38-5.38a8 8 0 1 1 1.41-1.41zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z" />
@@ -110,6 +128,25 @@ const Header = () => {
           </div>
         )}
       </div>
+      {isDarkTheme ? (
+        <button className="ml-auto text-white" onClick={onToggleTheme}>
+        Light Mode
+      </button>
+      ) : (
+        <button className="ml-auto text-black" onClick={onToggleTheme}>
+        Dark Mode
+      </button>
+      )}
+      {/* <button
+          className={`ml-auto ${
+            isDarkTheme
+              ? "text-white"
+              : "text-black"
+          }`}
+          onClick={onToggleTheme}
+        >
+          Toggle Theme
+        </button> */}
       <button className="ml-auto">
         <svg
           className="h-8 w-8 text-blue-400"

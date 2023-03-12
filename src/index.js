@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import Header from "./components/Header";
@@ -14,10 +14,17 @@ import Body from "./components/Body";
 import SearchedVideos from "./components/SearchedVideos";
 
 const AppLayout = () => {
+
+  const [isDarkTheme, setIsDarkTheme] = useState(false);
+
+  const toggleTheme = () => {
+    setIsDarkTheme(!isDarkTheme);
+  };
+
   return (
     <Provider store={store}>
-      <Header />
-      <div className="flex">
+      <Header isDarkTheme={isDarkTheme} onToggleTheme={toggleTheme} />
+      <div className={`flex ${isDarkTheme ? "bg-black text-white" : "bg-white text-black"}`}>
         <Navbar />
         <Outlet />
       </div>
