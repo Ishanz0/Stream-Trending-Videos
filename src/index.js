@@ -12,9 +12,9 @@ import VideoList from "./components/VideosList";
 import Streaming from "./components/Streaming";
 import Body from "./components/Body";
 import SearchedVideos from "./components/SearchedVideos";
+import themeContext from "./utils/themeContext";
 
 const AppLayout = () => {
-
   const [isDarkTheme, setIsDarkTheme] = useState(false);
 
   const toggleTheme = () => {
@@ -23,11 +23,17 @@ const AppLayout = () => {
 
   return (
     <Provider store={store}>
-      <Header isDarkTheme={isDarkTheme} onToggleTheme={toggleTheme} />
-      <div className={`flex ${isDarkTheme ? "bg-black text-white" : "bg-white text-black"}`}>
-        <Navbar />
-        <Outlet />
-      </div>
+      <themeContext.Provider value={{ isDarkTheme }}>
+        <Header isDarkTheme={isDarkTheme} onToggleTheme={toggleTheme} />
+        <div
+          className={`flex ${
+            isDarkTheme ? "bg-black text-white" : "bg-white text-black"
+          }`}
+        >
+          <Navbar />
+          <Outlet />
+        </div>
+      </themeContext.Provider>
     </Provider>
   );
 };

@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { toggleMenu } from "../utils/appSlice";
 
-const Sidebar = () => {
+const Sidebar = ({ isDarkTheme }) => {
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
   const dispatch = useDispatch();
 
@@ -14,7 +14,11 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="bg-white w-60 p-5 shadow-lg fixed top-0 bottom-0 h-screen left-0">
+    <div
+      className={`${
+        isDarkTheme ? "bg-black text-white" : "bg-white text-black"
+      } w-60 p-5 shadow-lg fixed top-0 bottom-0 h-screen left-0`}
+    >
       <div className="flex">
         <button onClick={() => toggleMenuHandler()}>
           <svg
