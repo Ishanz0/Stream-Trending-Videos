@@ -7,7 +7,7 @@ import ThemeContext from "../utils/themeContext";
 const Body = () => {
   const { isDarkTheme } = useContext(ThemeContext);
   return (
-    <div className="w-full">
+    <div className="w-full mt-12 ml-16">
       <Sidebar isDarkTheme={isDarkTheme} />
       <Outlet />
     </div>

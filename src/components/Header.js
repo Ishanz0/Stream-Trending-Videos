@@ -64,7 +64,7 @@ const Header = ({ isDarkTheme, onToggleTheme }) => {
   } h-6 w-6`;
 
   return (
-    <div className={`p-3 flex ${
+    <div className={`p-3 flex fixed w-screen ${
       isDarkTheme ? "bg-black text-white" : "bg-white text-black"
     }`}>
       <div className="flex">
