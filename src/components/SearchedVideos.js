@@ -24,7 +24,6 @@ const VideoContainer = () => {
 
   return (
     <div className="flex flex-wrap">
-      {console.log(videos)}
       {videos &&
         videos.map((video) => (
           <Link key={video.id?.videoId} to={"/stream?v=" + video?.id?.videoId}>

@@ -13,7 +13,7 @@ const Streaming = () => {
       <iframe
         width="800"
         height="450"
-        src={"http://www.youtube.com/embed/" + searchParam.get("v")}
+        src={"https://www.youtube.com/embed/" + searchParam.get("v")}
         title="YouTube video player"
         frameBorder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

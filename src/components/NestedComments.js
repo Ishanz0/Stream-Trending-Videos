@@ -120,7 +120,6 @@ const Comment = ({ comments }) => {
 const CommentsList = ({ data }) => {
   return data.map((comment, index) => (
     <div>
-      {console.log(comment.replies)}
       <Comment key={index} comments={comment} />
       <div className="pl-5 border border-l-black ml-5">
         <CommentsList data={comment.replies} />

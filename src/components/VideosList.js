@@ -28,7 +28,6 @@ const VideoList = () => {
   async function getVideos() {
     const data = await fetch(`${VIDEOS_URL}&pageToken=${pageToken || ""}`);
     const json = await data.json();
-    console.log(json.items);
     setVideos(pageToken ? [...videos, ...json.items] : json.items);
     if (json.nextPageToken) {
       setPageToken(json.nextPageToken);
