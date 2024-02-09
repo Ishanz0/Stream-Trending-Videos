@@ -5,6 +5,7 @@ import { cacheResults } from "../utils/searchSlice";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { toggleMenu } from "../utils/appSlice";
+import { hover } from "@testing-library/user-event/dist/hover";
 
 const Header = ({ isDarkTheme, onToggleTheme }) => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -113,12 +114,12 @@ const Header = ({ isDarkTheme, onToggleTheme }) => {
           </button>
         </div>
         {showSuggestions && (
-          <div className="absolute bg-white shadow-lg rounded-xl py-2 border border-gray-100 top-full w-[565px] px-4">
+          <div className={`absolute shadow-lg rounded-xl py-2 border top-full px-4 w-[565px] ${isDarkTheme ? 'bg-gray-800 border-gray-700 text-white' : 'bg-white border-gray-100 text-black'}`}>
             <ul>
               {suggestions?.map((suggestion) => (
                 <li
                   key={suggestion}
-                  className="py-1 hover:bg-gray-100"
+                  className={`${isDarkTheme ? 'hover:bg-gray-900' : 'hover:bg-gray-100'} py-1`}
                   onMouseDown={() => handleSuggestionClick(suggestion)}
                 >
                   {suggestion}

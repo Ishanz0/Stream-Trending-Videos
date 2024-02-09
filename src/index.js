@@ -15,7 +15,7 @@ import SearchedVideos from "./components/SearchedVideos";
 import themeContext from "./utils/themeContext";
 
 const AppLayout = () => {
-  const [isDarkTheme, setIsDarkTheme] = useState(false);
+  const [isDarkTheme, setIsDarkTheme] = useState(true);
 
   const toggleTheme = () => {
     setIsDarkTheme(!isDarkTheme);

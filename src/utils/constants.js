@@ -13,7 +13,7 @@ export const CHANNELS_URL =
   API_KEY;
 
 export const SEARCH_SUGGESTIONS =
-  "http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=";
+  "https://cors-proxy.fringe.zone/https://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=";
 
 export const SEARCH_VIDEOS =
   "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=";
